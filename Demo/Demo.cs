@@ -44,9 +44,75 @@ internal static class Demo
         }
     }
 
+    static void Demo4()
+    {
+        var yaap = Range(0, 2000).TimeIt(settings: new TimeItSettings
+        {
+            Description = "detect stalls",
+            Width = 100,
+            SmoothingFactor = 0.5,
+        },
+        callback: Callback);
+
+        foreach (var i in yaap)
+        {
+            if (i == 900)
+            {
+                yaap.State = TimeItState.Paused;
+                Thread.Sleep(5000);
+                yaap.State = TimeItState.Running;
+                continue;
+            }
+
+            if (i == 1900)
+            {
+                yaap.State = TimeItState.Stalled;
+                Thread.Sleep(5000);
+                yaap.State = TimeItState.Running;
+                continue;
+            }
+
+            Thread.Sleep(10);
+        }
+    }
+
+    static void Demo5()
+    {
+        using (var mre = new ManualResetEvent(false))
+        using (var allReady = new CountdownEvent(10))
+        {
+            var threads = Range(0, 10).Select(ti => new Thread(() =>
+            {
+                var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
+                var y = Range(0, 200).TimeIt(settings: new TimeItSettings
+                { Description = $"thread{ti}" },
+                callback: Callback);
+                allReady.Signal();
+                mre.WaitOne();
+                foreach (var _ in y)
+                {
+                    Thread.Sleep(r.Next(90, 110) / (ti + 1));
+                }
+            })).ToList();
+
+            foreach (var t in threads)
+            {
+                t.Start();
+            }
+
+            allReady.Wait();
+
+            mre.Set();
+            foreach (var t in threads)
+            {
+                t.Join();
+            }
+        }
+    }
+
     static void Main(string[] args)
     {
-        var demos = new Action[] { Demo1, Demo2, Demo3 };
+        var demos = new Action[] { Demo1, Demo2, Demo3, Demo4, Demo5 };
         var startDemo = args.Length > 0
             ? (int.TryParse(args[0], out var tmp) ? tmp : 1)
             : 1;

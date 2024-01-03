@@ -72,7 +72,7 @@ public class TimeIt : IDisposable
 
         epilogueLen += EPILOGUE_SAMPLE.Length + Settings.UnitName.Length;
 
-        var capturedWidth = Settings.Width ?? 150;
+        var capturedWidth = Settings.Width ?? 100;
 
         var prologueCount = (string.IsNullOrWhiteSpace(Settings.Description) ? 0 : Settings.Description.Length) + 7;
 
@@ -282,7 +282,7 @@ public class TimeIt : IDisposable
         {
             buffer.Append(']');
         }
-        _callback?.Invoke(buffer.ToString());
+        _callback?.Invoke(buffer.ToString().Trim());
 
         _lastProgress = progress;
         _lastRepaintTicks = elapsedTicks;
