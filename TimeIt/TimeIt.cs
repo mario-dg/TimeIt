@@ -78,11 +78,7 @@ public class TimeIt : IDisposable
 
         _maxGlyphWidth = capturedWidth - prologueCount - epilogueLen;
 
-        _repaintProgressIncrement = (double)Total / (_maxGlyphWidth * _selectedBarStyle.Length);
-        if (Math.Abs(_repaintProgressIncrement) < TOLERANCE)
-        {
-            _repaintProgressIncrement = 1;
-        }
+        _repaintProgressIncrement = 1;
 
         _nextRepaintProgress =
             Progress / _repaintProgressIncrement * _repaintProgressIncrement +

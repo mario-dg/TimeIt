@@ -10,7 +10,7 @@ internal static class Demo
 {
     static void Callback(string timeItString)
     {
-        Debug.WriteLine(timeItString);
+        Console.WriteLine(timeItString);
     }
 
     static void Demo1()
@@ -110,9 +110,25 @@ internal static class Demo
         }
     }
 
+    static void Demo6()
+    {
+        var rnd = new Random();
+        foreach (var i in Range(0, 30232).TimeIt(settings: new TimeItSettings
+        {
+            Description = "many items",
+            Width = 100,
+            Elements = TimeItElement.Description | TimeItElement.ProgressCount
+                | TimeItElement.Time | TimeItElement.Rate
+        },
+            callback: Callback))
+        {
+            Thread.Sleep(rnd.Next(100, 300));
+        }
+    }
+
     static void Main(string[] args)
     {
-        var demos = new Action[] { Demo1, Demo2, Demo3, Demo4, Demo5 };
+        var demos = new Action[] { /*Demo1, Demo2, Demo3, Demo4, Demo5,*/ Demo6 };
         var startDemo = args.Length > 0
             ? (int.TryParse(args[0], out var tmp) ? tmp : 1)
             : 1;
