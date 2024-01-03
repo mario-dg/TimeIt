@@ -33,17 +33,17 @@ See: https://learn.microsoft.com/visualstudio/msbuild/customize-your-build
     https://learn.microsoft.com/nuget/create-packages/package-authoring-best-practices#package-metadata
    -->
   <PropertyGroup Label="NuGet Details">
-    <Title>CHANGEME: Keboo.NuGet</Title>
-    <Authors>CHANGEME: Keboo.Template</Authors>
-    <Description>CHANGEME: A library generated from Keboo's template. https://github.com/Keboo/DotnetTemplates</Description>
-    <Copyright>Copyright © 2024-$([System.DateTime]::Now.ToString("yyyy"))</Copyright>
+    <Title>TimeIt</Title>
+    <Authors>Mario da Graca</Authors>
+    <Description>A convenient library to time the execution of long running enumerables</Description>
+    <Copyright>Copyright © Mario da Graca 2024-$([System.DateTime]::Now.ToString("yyyy"))</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <!-- The recommended size for the icon is 128x128: https://learn.microsoft.com/nuget/reference/msbuild-targets#packing-an-icon-image-file -->
-    <PackageIcon>NuGetIcon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/CHANGEME_RepoOwner/CHANGEME_RepoName</RepositoryUrl>
+    <PackageIcon>TimeItIcon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/mario-dg/TimeIt</RepositoryUrl>
     <!-- If you project has a website set that value here; optionally this can also point to the repo -->
-    <!-- <PackageProjectUrl>https://github.com/CHANGEME_RepoOwner/CHANGEME_RepoName</PackageProjectUrl> -->
-    <PackageReadmeFile>NuGetPackageReadme.md</PackageReadmeFile>
+    <!-- <PackageProjectUrl>https://github.com/mario-dg/TimeIt</PackageProjectUrl> -->
+    <PackageReadmeFile>TimeItReadme.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
