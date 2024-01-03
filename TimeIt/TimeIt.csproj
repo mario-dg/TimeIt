@@ -9,6 +9,9 @@
     <Copyright>Copyright © Mario da Graca 2024-$([System.DateTime]::Now.ToString("yyyy"))</Copyright>
     <PackageIcon>TimeItIcon.png</PackageIcon>
     <PackageReadmeFile>TimeItReadme.md</PackageReadmeFile>
+    <FileVersion></FileVersion>
+    <AssemblyVersion></AssemblyVersion>
+    <VersionPrefix>1.0.2</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup Label="NuGet">

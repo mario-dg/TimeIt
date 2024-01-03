@@ -455,11 +455,11 @@ public class TimeIt : IDisposable
             if (elapsed == TimeSpan.MaxValue)
                 buffer.Append("--:--?<");
             else
-                buffer.AppendFormat("{0:D2}:{1:D2}m<", ehours, eminutes);
+                buffer.AppendFormat("{0:D2}:{1:D2}h<", ehours, eminutes);
             if (remaining == TimeSpan.MaxValue)
                 buffer.Append("--:--?");
             else
-                buffer.AppendFormat("{0:D2}:{1:D2}m", rhours, rminutes);
+                buffer.AppendFormat("{0:D2}:{1:D2}h", rhours, rminutes);
         }
         else
         {
@@ -469,7 +469,7 @@ public class TimeIt : IDisposable
             }
             else
             {
-                buffer.AppendFormat("{0:D2}:{1:D2}s<", eminutes, eseconds);
+                buffer.AppendFormat("{0:D2}:{1:D2}m<", eminutes, eseconds);
             }
 
             if (remaining == TimeSpan.MaxValue)
@@ -478,7 +478,7 @@ public class TimeIt : IDisposable
             }
             else
             {
-                buffer.AppendFormat("{0:D2}:{1:D2}s", rminutes, rseconds);
+                buffer.AppendFormat("{0:D2}:{1:D2}m", rminutes, rseconds);
             }
         }
     }
