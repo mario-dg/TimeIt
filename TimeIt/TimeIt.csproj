@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0-windows;net8.0-windows</TargetFrameworks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>TimeIt: The convenient timer for long running enumerables</Title>
+    <Authors>Mario da Graca</Authors>
+    <Description />
+    <Copyright>Copyright © Mario da Graca 2024-$([System.DateTime]::Now.ToString("yyyy"))</Copyright>
+    <PackageIcon>TimeItIcon.png</PackageIcon>
+    <PackageReadmeFile>TimeItReadme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup Label="NuGet">
+    <!-- 
+    Ensure the icon is included in the NuGet package
+    https://learn.microsoft.com/nuget/reference/msbuild-targets#packing-an-icon-image-file
+    -->
+    <None Include="TimeItIcon.png" Pack="true" PackagePath="\" />
+
+    <!-- 
+    Ensure the README is included in the NuGet package
+    https://learn.microsoft.com/nuget/reference/msbuild-targets#packagereadmefile
+    -->
+    <None Include="..\TimeItReadme.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TimeItIcon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
